@@ -34,7 +34,7 @@ Como vários técnicos vão usar o app ao mesmo tempo em celulares diferentes, o
 5. Volte para a tela inicial do projeto, clique no ícone **"</>"** (Web) para registrar um app.
    - Dê um apelido (ex.: `app-estoque`) e clique em **Registrar app**.
    - Copie o bloco `firebaseConfig` que aparece na tela.
-6. Abra o arquivo `js/firebase-config.js` deste projeto e **cole seus dados** no lugar dos valores de exemplo (`apiKey`, `authDomain`, `projectId`, etc.).
+6. Abra o arquivo `firebase-config.js` deste projeto e **cole seus dados** no lugar dos valores de exemplo (`apiKey`, `authDomain`, `projectId`, etc.).
 7. Salve o arquivo.
 
 Pronto — o app já está conectado ao seu banco de dados.
@@ -58,11 +58,13 @@ Pronto — o app já está conectado ao seu banco de dados.
 ```
 estoque-paysgae/
 ├── index.html          → estrutura das duas abas do app
-├── css/style.css        → todo o visual (cores, tipografia, layout)
-├── js/firebase-config.js → suas credenciais do Firebase (editar aqui)
-├── js/app.js             → lógica do app (formulários, gráfico, sincronização)
+├── style.css            → todo o visual (cores, tipografia, layout)
+├── firebase-config.js   → suas credenciais do Firebase (editar aqui)
+├── app.js               → lógica do app (formulários, gráfico, sincronização)
 └── README.md
 ```
+
+Os arquivos ficam todos juntos, sem subpastas, de propósito: ao enviar o projeto pela tela de upload do GitHub (github.com → Add file → Upload files), arrastar arquivos soltos não recria subpastas — só arrastar uma pasta inteira faz isso, e nem todo navegador/computador se comporta igual. Sem subpastas, esse problema não existe: é só arrastar todos os arquivos de uma vez.
 
 ## 4. Identidade visual aplicada
 
@@ -84,7 +86,7 @@ O layout foi construído em cima do **PAYCO Digital Design System v1.1** (arquiv
 | Badge "entrada" / "assistência vigente"  | `--success` / `--payco-olive` |
 | Fundo, cartões, texto                    | `--bg`, `--surface-card`, `--text-primary/secondary/muted` (variam por tema) |
 
-Todos os tokens ficam no topo do `css/style.css`, copiados 1:1 do arquivo `design-system.html` oficial. Qualquer atualização futura da marca deve primeiro atualizar esse documento oficial e depois ser refletida aqui.
+Todos os tokens ficam no topo do `style.css`, copiados 1:1 do arquivo `design-system.html` oficial. Qualquer atualização futura da marca deve primeiro atualizar esse documento oficial e depois ser refletida aqui.
 
 **Tipografia:** apenas **Montserrat** é usada na interface — o design system reserva a Galiwar (fonte do lettering da marca) só para peças editoriais (capa, divisores), nunca para interface funcional.
 
