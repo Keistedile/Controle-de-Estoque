@@ -1,0 +1,283 @@
+/* ============================================================
+   Estoque · Paysage Corpal — construído sobre o PAYCO Digital
+   Design System v1.1. Tokens copiados 1:1 do design-system.html
+   oficial; nenhuma cor/espaçamento inventado fora dele.
+   ============================================================ */
+:root {
+  /* Paleta institucional */
+  --payco-green-dark: #24352B;
+  --payco-green-gray: #364F4A;
+  --payco-olive: #889A48;
+  --payco-gold: #B7A267;
+  --payco-terracotta: #A76F47;
+  --payco-black: #2C2D2A;
+  --payco-gray: #E5E5E5;
+  --payco-white: #FFFFFF;
+
+  /* Superfícies dark (tema padrão, dark-first) */
+  --surface-0: #111311;
+  --surface-1: #171A18;
+  --surface-2: #1D211E;
+  --surface-3: #252A27;
+  --surface-4: #303632;
+  --border-soft: rgba(255,255,255,.08);
+  --border-softer: rgba(255,255,255,.05);
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(255,255,255,.68);
+  --text-muted: rgba(255,255,255,.46);
+  --success: #9CB37E; --success-bg: rgba(136,154,72,.14);
+  --warning: var(--payco-gold); --warning-bg: rgba(183,162,103,.14);
+  --critical: #C98564; --critical-bg: rgba(167,111,71,.16);
+  --info: #9AB3AE; --info-bg: rgba(54,79,74,.22);
+
+  --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px; --space-5:24px;
+  --space-6:32px; --space-7:40px; --space-8:48px;
+
+  --radius-xs:4px; --radius-sm:6px; --radius-md:8px; --radius-lg:12px; --radius-xl:16px; --radius-pill:9999px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.3);
+  --shadow-md: 0 12px 40px rgba(0,0,0,.4);
+  --motion-fast: 120ms cubic-bezier(.4,0,.2,1);
+  --motion-base: 200ms cubic-bezier(.4,0,.2,1);
+
+  /* Galiwar é editorial (capa/divisores) — nunca em interface funcional.
+     A UI inteira do app usa Montserrat, como o design system determina. */
+  --font-display: 'Montserrat', -apple-system, sans-serif;
+
+  --bg: var(--surface-0);
+  --surface-card: var(--surface-2);
+  --nav-bg: var(--surface-1);
+
+  --color-background: var(--bg);
+  --color-surface: var(--surface-card);
+  --color-border: var(--border-soft);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--payco-olive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--critical);
+
+  --color-interactive: var(--payco-olive);
+  --color-interactive-hover: #9CAE5C;
+  --color-interactive-active: #6F7F3A;
+  --color-focus: var(--payco-olive);
+  --color-focus-ring: rgba(136,154,72,.35);
+
+  /* on-dark: para o topbar, que permanece escuro nos dois temas */
+  --on-dark-primary: #FFFFFF;
+  --on-dark-secondary: rgba(255,255,255,.72);
+  --on-dark-muted: rgba(255,255,255,.46);
+  --on-dark-border-soft: rgba(255,255,255,.12);
+  --on-dark-hover-bg: rgba(255,255,255,.06);
+
+  --color-input: var(--surface-1);
+  --color-surface-subtle: var(--surface-1);
+  --color-surface-muted: var(--surface-4);
+
+  /* Grafismo — apenas decorativo, nunca conteúdo */
+  --graphic-bg-dark: #171A18;
+  --graphic-line-dark: rgba(255,255,255,.10);
+  --graphic-accent-dark: rgba(183,162,103,.6);
+  --graphic-bg-light: #F3F3EF;
+  --graphic-line-light: rgba(44,45,42,.12);
+  --graphic-accent-light: rgba(138,106,46,.55);
+}
+
+:root[data-theme="light"] {
+  --bg: #FAFAF8;
+  --surface-card: #FFFFFF;
+  --nav-bg: var(--payco-green-dark);
+  --border-soft: #E2E2DD;
+  --border-softer: #ECECE7;
+  --text-primary: #2C2D2A;
+  --text-secondary: #55584f;
+  --text-muted: #86897f;
+  --color-input: #FFFFFF;
+  --color-surface-subtle: #F1F1EC;
+  --color-surface-muted: #E7E7E1;
+  --success: #4C6B3F; --success-bg: #EEF2E8;
+  --warning: #8A6A2E; --warning-bg: #FBF3E7;
+  --critical: #8A4B2E; --critical-bg: #F7EAE3;
+  --info: #364F4A; --info-bg: #EAF0EE;
+  --shadow-sm: 0 1px 2px rgba(36,53,43,.07);
+  --shadow-md: 0 10px 30px rgba(36,53,43,.10);
+  --color-interactive-hover: #6F7F3A;
+  --color-interactive-active: #576330;
+  --color-focus-ring: rgba(136,154,72,.28);
+}
+
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+body{
+  background: var(--bg); color: var(--text-primary);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  transition: background var(--motion-base), color var(--motion-base);
+}
+h1,h2,h3{ margin:0; font-family: var(--font-display); font-weight:700; letter-spacing:-0.01em; }
+button, input, select{ font-family: inherit; }
+:focus-visible{ outline: 2px solid var(--color-focus); outline-offset: 2px; }
+
+/* ---------- Topbar (usa --nav-bg: sempre escuro nos dois temas) ---------- */
+.topbar{
+  position: sticky; top:0; z-index: 20;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px; padding: calc(12px + env(safe-area-inset-top)) var(--space-4) 12px;
+  background: var(--nav-bg); color: var(--on-dark-primary);
+  border-bottom: 1px solid var(--on-dark-border-soft);
+  position: relative; overflow: hidden;
+}
+.topbar__graphism{ position:absolute; inset:0; opacity:.55; pointer-events:none; }
+.topbar__brand{ display:flex; align-items:center; gap:10px; position:relative; z-index:1; }
+.topbar__logo{ width:34px; height:auto; color: var(--payco-gold); flex-shrink:0; }
+.topbar__text{ display:flex; flex-direction:column; gap:2px; }
+.topbar__text strong{ font-size: 14px; font-weight:700; letter-spacing:0.02em; color: var(--on-dark-primary); }
+.topbar__text small{ font-size: 10.5px; letter-spacing: 0.01em; color: var(--on-dark-secondary); }
+.topbar__right{ display:flex; align-items:center; gap:10px; position:relative; z-index:1; }
+
+.status{ font-size: 10px; color: var(--critical); }
+.status--online{ color: var(--success); }
+
+.ds-theme-toggle{
+  border:1px solid var(--on-dark-border-soft); background:transparent; color: var(--on-dark-secondary);
+  font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  padding:6px 10px; border-radius: var(--radius-pill); cursor:pointer; transition: all var(--motion-fast);
+}
+.ds-theme-toggle:hover{ border-color: var(--color-interactive); background: var(--on-dark-hover-bg); color: var(--on-dark-primary); }
+
+/* ---------- Layout ---------- */
+.app{ max-width: 720px; margin: 0 auto; padding: var(--space-4) 14px 24px; }
+.view{ display:none; animation: fade .18s ease; }
+.view--active{ display:block; }
+@keyframes fade{ from{opacity:0} to{opacity:1} }
+
+/* ---------- KPI / métricas ---------- */
+.summary-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom: var(--space-4); }
+.ds-card{
+  background: var(--surface-card); border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  margin-bottom: var(--space-4); box-shadow: var(--shadow-sm);
+}
+.ds-card-title{
+  font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+  color: var(--text-muted); margin-bottom: var(--space-2);
+}
+.ds-metric-card{ padding: var(--space-4); }
+.ds-metric-card .value{ font-family: var(--font-display); font-size: 21px; font-weight:700; color: var(--text-primary); }
+.ds-metric-card--accent{ border-left: 3px solid var(--payco-olive); }
+.ds-metric-card--warn{ border-left: 3px solid var(--critical); }
+
+.panel h2{ font-size: 15px; margin-bottom: 4px; }
+.panel__hint{ font-size: 12.5px; color: var(--text-secondary); margin: 0 0 var(--space-4); }
+.panel__headrow{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom: var(--space-3); flex-wrap: wrap; }
+.panel-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 520px){ .panel-row{ grid-template-columns: 1fr; } }
+.chart-wrap{ height: 260px; position:relative; }
+
+/* ---------- Rankings ---------- */
+.rank-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.rank-list li{ display:flex; justify-content:space-between; gap:8px; font-size: 13px; padding: var(--space-3); background: var(--color-surface-subtle); border-radius: var(--radius-sm); }
+.rank-list li span:last-child{ font-variant-numeric: tabular-nums; color: var(--text-secondary); white-space:nowrap; }
+
+/* ---------- Empty state (padrão do design system) ---------- */
+.ds-empty-state{ text-align:center; padding: var(--space-6) var(--space-4); color: var(--text-muted); }
+.ds-empty-state .icn{ font-size: 26px; margin-bottom: var(--space-2); opacity:.4; }
+.ds-empty-state p{ margin:0; font-size:13px; }
+
+/* ---------- Tabela ---------- */
+.table-scroll{ overflow-x:auto; }
+table.ds-table{ width:100%; border-collapse: collapse; font-size: 12.5px; min-width: 480px; }
+.ds-table thead th{
+  text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.05em;
+  color: var(--text-muted); font-weight:700; padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-subtle); border-bottom: 1px solid var(--border-soft);
+}
+.ds-table td{ padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-softer); color: var(--text-secondary); }
+.ds-table tbody tr:last-child td{ border-bottom:none; }
+.ds-table .num{ text-align:right; font-variant-numeric: tabular-nums; }
+.ds-table .low{ color: var(--critical); font-weight:700; }
+.ds-filter-search{
+  border:1px solid var(--border-soft); border-radius: var(--radius-pill); padding:9px 16px;
+  font-size:12.5px; background: var(--color-input); color:var(--text-primary); max-width: 200px;
+}
+
+/* ---------- Tabs (ds-tabs) ---------- */
+.ds-tabs{ display:flex; gap: var(--space-3); border-bottom:1px solid var(--border-soft); margin-bottom: var(--space-4); }
+.ds-tab{
+  padding: 10px 4px; font-size:13px; font-weight:600; color: var(--text-muted);
+  border-bottom:2px solid transparent; cursor:pointer; background:none; border-top:none; border-left:none; border-right:none;
+  flex:1; text-align:center;
+}
+.ds-tab.active{ color: var(--text-primary); border-color: var(--payco-olive); }
+
+/* ---------- Campos (ds-field) ---------- */
+.ds-field{ margin-bottom: var(--space-4); }
+.ds-field label{ display:block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color: var(--text-muted); margin-bottom:6px; }
+.ds-field input, .ds-field select{
+  width:100%; padding:11px 13px; border:1px solid var(--border-soft); border-radius: var(--radius-sm);
+  font-size:15px; font-family:inherit; background: var(--color-input); color: var(--text-primary);
+}
+.ds-field input:focus, .ds-field select:focus{ outline:2px solid var(--color-focus-ring); outline-offset:1px; border-color: var(--payco-olive); }
+.ds-field .help-msg{ font-size:12px; color: var(--text-muted); margin-top:5px; }
+.field-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+.form{ display:none; }
+.form--active{ display:block; }
+
+/* ---------- Botões (ds-btn) ---------- */
+.ds-btn{
+  width:100%; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:inherit; font-size:15px; font-weight:600; padding:13px 16px;
+  border-radius: var(--radius-sm); border:1px solid transparent; cursor:pointer; transition: all var(--motion-fast);
+}
+.ds-btn:active{ transform: scale(.98); }
+.ds-btn-primary{ background: var(--payco-olive); color:#12160f; border-color: var(--payco-olive); }
+.ds-btn-primary:hover{ filter: brightness(1.08); }
+/* Extensão do app: segunda cor de ação, usando o terracota institucional
+   (não definido como botão no design system, construído com o mesmo padrão do ds-btn-primary) */
+.ds-btn-terracotta{ background: var(--payco-terracotta); color:#FFFFFF; border-color: var(--payco-terracotta); }
+.ds-btn-terracotta:hover{ filter: brightness(1.08); }
+.ds-btn-danger{
+  width:auto; background:transparent; color: var(--critical); border-color: rgba(167,111,71,.4);
+  padding: 7px 12px; font-size:12.5px; font-weight:600;
+}
+.ds-btn-danger:hover{ background: var(--critical-bg); }
+
+.form__feedback{ margin: var(--space-3) 0 0; font-size: 13px; min-height: 18px; }
+.form__feedback.ok{ color: var(--success); }
+.form__feedback.err{ color: var(--critical); }
+
+.saldo-preview{ background: var(--color-surface-subtle); border-radius: var(--radius-sm); padding: 10px 12px; font-size: 13px; color: var(--text-secondary); margin-bottom: var(--space-4); }
+.saldo-preview strong{ color: var(--text-primary); font-variant-numeric: tabular-nums; }
+
+/* ---------- Badges (ds-badge) ---------- */
+.ds-badge{ display:inline-flex; align-items:center; gap:6px; padding:4px 10px; border-radius:var(--radius-pill); font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; }
+.ds-badge.olive{ background: rgba(136,154,72,.16); color: var(--payco-olive); }
+.ds-badge.success{ background: var(--success-bg); color: var(--success); }
+.ds-badge.critical{ background: var(--critical-bg); color: var(--critical); }
+/* Extensão do app: badge terracota (retiradas) — mesmo padrão dos badges do design system */
+.ds-badge.terracotta{ background: rgba(167,111,71,.16); color: var(--payco-terracotta); }
+
+/* ---------- Listas de movimentação / obras ---------- */
+.movement-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+.movement-list li{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding: var(--space-3); border-radius: var(--radius-sm); background: var(--color-surface-subtle); font-size: 13px; }
+.obra-meta{ display:flex; flex-direction:column; gap:2px; font-size: 12.5px; color: var(--text-secondary); }
+.obra-meta__row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+
+/* ---------- Bottom tab bar (extensão mobile do app, tokens do DS) ---------- */
+.tabbar{
+  position: fixed; bottom:0; left:0; right:0; z-index: 30;
+  display:flex; background: var(--surface-card);
+  border-top: 1px solid var(--border-soft);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.tabbar__btn{
+  flex:1; border:none; background:none; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  padding: 10px 4px 8px; font-size: 11px; color: var(--text-muted); font-weight:600;
+  transition: color var(--motion-fast);
+}
+.tabbar__icon{ font-size: 18px; }
+.tabbar__btn--active{ color: var(--payco-olive); }
